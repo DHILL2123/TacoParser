@@ -20,7 +20,7 @@
                 // Log that and return null
                 logger.LogWarning("Array length less than 3");
                 // Do not fail if one record parsing fails, return null
-                return null; // TODO Implement
+                return null; // DONE Implement
             }
 
             // grab the latitude from your array at index 0

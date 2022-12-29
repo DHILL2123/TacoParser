@@ -12,7 +12,7 @@ namespace LoggingKata
 
         static void Main(string[] args)
         {
-            // TODO:  Find the two Taco Bells that are the furthest from one another.
+            // Done:  Find the two Taco Bells that are the furthest from one another.
             // HINT:  You'll need two nested forloops ---------------------------
 
             logger.LogInfo("Log initialized");
@@ -41,13 +41,15 @@ namespace LoggingKata
 
             // Now that your Parse method is completed, START BELOW ----------
 
-            // TODO: Create two `ITrackable` variables with initial values of `null`. These will be used to store your two taco bells that are the farthest from each other.
+            // Done: Create two `ITrackable` variables with initial values of `null`. These will be used to store your two taco bells that are the farthest from each other.
             // Create a `double` variable to store the distance
             ITrackable tacoBell1 = null;
             ITrackable tacoBell2 = null;
 
             double tacoBellDistance = 0;
-
+            double distanceInMiles = 0;
+            distanceInMiles = tacoBellDistance / 1609.344;
+           
             // Include the Geolocation toolbox, so you can compare locations: `using GeoCoordinatePortable;`
 
             //HINT NESTED LOOPS SECTION---------------------
@@ -75,11 +77,14 @@ namespace LoggingKata
                     if (corA.GetDistanceTo(corB) > tacoBellDistance)
                     {
                         tacoBellDistance = corA.GetDistanceTo(corB);
+                        distanceInMiles = tacoBellDistance / 1609.344;
+                        distanceInMiles = Math.Round(distanceInMiles, 2);
 
                         tacoBell1 = locA;
                         tacoBell2 = locB;
                     }
 
+                   
 
                     // Now, compare the two using `.GetDistanceTo()`, which returns a double
                     // If the distance is greater than the currently saved distance, update the distance and the two `ITrackable` variables you set above
@@ -93,7 +98,8 @@ namespace LoggingKata
             }
 
 
-            logger.LogInfo($"{tacoBell1.Name} and {tacoBell2.Name} are the farthest apart");
+            logger.LogInfo($"{tacoBell1.Name} and {tacoBell2.Name} are {distanceInMiles} miles apart");
+            
 
 
 
